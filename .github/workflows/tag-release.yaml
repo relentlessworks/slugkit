@@ -17,6 +17,8 @@ jobs:
       exists: ${{ steps.check_tag.outputs.exists }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Read version
         id: version
