@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>slugkit</title>
+<style>
+body{font-family:system-ui,-apple-system,sans-serif;max-width:720px;margin:2rem auto;padding:0 1rem;line-height:1.6;color:#1a1a1a}
+h1{font-size:2rem;margin-bottom:0.5rem}
+.tagline{color:#666;font-size:1.1rem;margin-bottom:2rem}
+code,pre{background:#f4f4f4;padding:0.2em 0.4em;border-radius:3px;font-size:0.9em}
+pre{padding:1rem;overflow-x:auto}
+a{color:#0969da;text-decoration:none}
+a:hover{text-decoration:underline}
+.badge{display:inline-block;background:#ddf4ff;color:#0969da;padding:2px 8px;border-radius:12px;font-size:0.8rem;margin-right:4px}
+</style>
+</head>
+<body>
+<h1>slugkit</h1>
+<p class="tagline">Agentic-first URL slug generation service. Generate URL-safe slugs from text with unicode transliteration, configurable separators, and validation.</p>
+
+<p>
+<span class="badge">Go</span>
+<span class="badge">CGO_ENABLED=0</span>
+<span class="badge">Single Binary</span>
+<span class="badge">No Database</span>
+<span class="badge">MCP</span>
+</p>
+
+<h2>Quick Start</h2>
+<pre>make build
+./slugkit
+
+# Generate a slug
+curl "http://localhost:8472/slug?text=Hello+World"
+# → hello-world
+
+# Unicode transliteration
+curl "http://localhost:8472/slug?text=Café+Münster"
+# → cafe-munster
+
+# Validate a slug
+curl "http://localhost:8472/validate?slug=hello-world"
+# → slug=hello-world valid=true</pre>
+
+<h2>API</h2>
+<table>
+<tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+<tr><td>GET</td><td><code>/slug?text=...</code></td><td>Generate a slug</td></tr>
+<tr><td>POST</td><td><code>/slug</code></td><td>Generate a slug (JSON body)</td></tr>
+<tr><td>GET</td><td><code>/validate?slug=...</code></td><td>Validate a slug</td></tr>
+<tr><td>POST</td><td><code>/validate</code></td><td>Validate a slug (JSON body)</td></tr>
+<tr><td>GET</td><td><code>/help</code></td><td>Operating manual</td></tr>
+<tr><td>GET</td><td><code>/health</code></td><td>Health check</td></tr>
+<tr><td>POST</td><td><code>/mcp</code></td><td>MCP endpoint</td></tr>
+</table>
+
+<p><a href="https://github.com/relentlessworks/slugkit">View on GitHub →</a></p>
+
+<p><a href="https://github.com/relentlessworks/slugkit/blob/main/LICENSE">MIT License</a></p>
+</body>
+</html>
